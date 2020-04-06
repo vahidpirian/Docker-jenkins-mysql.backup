@@ -24,9 +24,21 @@ services:
     networks:
       - jn-net
 
+  db:
+    container_name: db
+    image: mysql:5.7
+    restart: unless-stopped
+    hostname: db
+    command: '--default-authentication-plugin=mysql_native_password'
+    env_file: .env
+    volumes:
+      - db-vol:/var/lib/mysql
+    networks:
+      - jn-net
 
 volumes:
   jenkins-vol:
+  db-vol:
 
 networks:
   jn-net:
