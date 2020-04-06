@@ -21,6 +21,8 @@ services:
       context: Centos7
     restart: unless-stopped
     hostname: remote-host
+    volumes: 
+      - "$PWD/script.sh:/home/jenkins/script.sh"
     networks:
       - jn-net
 
